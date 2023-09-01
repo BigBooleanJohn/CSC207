@@ -2,18 +2,20 @@
 all work is my own, I was also shown instruction on subtracting the 'a' bias from the 
 mini-project instructions, written by P.M. Osera and adapted by Sam Rebelski*/
 
+import java.io.PrintWriter;
 public class Cypher{//class declaration
 
 /*ErrorHandling is a function that checks the number if parameters needed in a given instance,
 and check's whether or not the given strings are valid ("code" or "decode")
 
-@Pre: sequence is an array of strings, could be empty, numParametersNeeded is a valid integer
+@Pre: sequence is an array of strings, could be empty, numParametersNeeded is a valid integer,
+functionName is a valid function name
 @Post: returns if sequence and parameters are not satisfactory*/
-    public static void ErrorHandling(String[] sequence, int NumParametersNeeded)
+    public static void ErrorHandling(String[] sequence, int NumParametersNeeded, String functionName)
     {
         if(sequence.length < NumParametersNeeded)//handling a lack of sufficient input
         {
-            System.err.println("you have entered insufficient commands");
+            System.err.printf("Error in %s function: you have entered insufficient commands", functionName);
             System.exit(1);
         }
         else if(sequence[0].compareTo("encode") != 0 && sequence[0].compareTo("decode") != 0)//handling improper command
@@ -32,7 +34,7 @@ and check's whether or not the given strings are valid ("code" or "decode")
     sequence array*/
     public static String CaesarCypher(int n, String[] sequence)
     {
-        ErrorHandling(sequence, 2);//calling a helper error handler to ckeck for parameters and correctness of parameters
+        ErrorHandling(sequence, 2, "CaesarCypher");//calling a helper error handler to ckeck for parameters and correctness of parameters
         if(sequence[0].compareTo("encode") == 0)//if the command is to cypher
         {
             char[] inputArr = sequence[1].toCharArray(); //converting the string to an array to mutate it
@@ -79,7 +81,7 @@ and check's whether or not the given strings are valid ("code" or "decode")
     sequence array*/
     public static String VigenereCypher(String[] sequence)
     {
-        ErrorHandling(sequence, 3);//calling a helper error handler to ckeck for parameters and correctness of parameters
+        ErrorHandling(sequence, 3, "VigenereCypher");//calling a helper error handler to ckeck for parameters and correctness of parameters
         if(sequence[0].compareTo("encode") == 0)//if we are commanded to Cypher
         {
             char[] inputArr = sequence[1].toCharArray(); //converting the string to an array to mutate it
@@ -127,7 +129,7 @@ and check's whether or not the given strings are valid ("code" or "decode")
         for(int i = 0; i < 26; i++)//calling caesarCypher on all i vals
         {
             String st = CaesarCypher(i, args);
-            System.out.printf("n = %d: %s\n", st);
+            pen.printf("n = %d: %s\n", i, st);
         }
         VigenereCypher(args); //calling VirgeneCypher
     }
