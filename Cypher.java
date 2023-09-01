@@ -2,11 +2,13 @@
 all work is my own, I was also shown instruction on subtracting the 'a' bias from the 
 mini-project instructions, written by P.M. Osera and adapted by Sam Rebelski*/
 
-
 public class Cypher{//class declaration
 
 /*ErrorHandling is a function that checks the number if parameters needed in a given instance,
-and check's whether or not the given strings are valid ("code" or "decode")*/
+and check's whether or not the given strings are valid ("code" or "decode")
+
+@Pre: sequence is an array of strings, could be empty, numParametersNeeded is a valid integer
+@Post: returns if sequence and parameters are not satisfactory*/
     public static void ErrorHandling(String[] sequence, int NumParametersNeeded)
     {
         if(sequence.length < NumParametersNeeded)//handling a lack of sufficient input
@@ -121,6 +123,7 @@ and check's whether or not the given strings are valid ("code" or "decode")*/
     /*all printing occurs here from the main function */
     public static void main(String[] args)
     {
+        PrintWriter pen = new PrintWriter(System.out, true);
         for(int i = 0; i < 26; i++)//calling caesarCypher on all i vals
         {
             String st = CaesarCypher(i, args);
