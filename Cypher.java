@@ -122,7 +122,7 @@ functionName is a valid function name
         return null;
     }
 
-    /*all printing occurs here from the main function */
+    /*all printing occurs here from  the main function */
     public static void main(String[] args)
     {
         PrintWriter pen = new PrintWriter(System.out, true);
@@ -131,6 +131,8 @@ functionName is a valid function name
             String st = CaesarCypher(i, args);
             pen.printf("n = %d: %s\n", i, st);
         }
-        VigenereCypher(args); //calling VirgeneCypher
+        String VigeStr = VigenereCypher(args); //calling VirgeneCypher
+        pen.printf("Calling Vigenere Cypher: %s\n", VigeStr);
+        pen.flush();//flushing the pen
     }
 }
